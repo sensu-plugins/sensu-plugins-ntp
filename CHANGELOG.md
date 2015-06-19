@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## Unreleased][unreleased]
 
+### Fixed
+- Modified check-ntp.rb to ignore additional initial line of ntpq output on some systems (e.g. Centos6)
+
 ## [0.0.2] - 2015-06-03
 
 ### Fixed
