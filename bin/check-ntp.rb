@@ -39,7 +39,7 @@ class CheckNTP < Sensu::Plugin::Check::CLI
 
   def run
     begin
-      output = `ntpq -c "rv 0 stratum,offset"`
+      output = `ntpq -c "rv 0 stratum,offset"`.split("\n").find { |line|  line.start_with?('stratum')  }
       stratum = output.split(',')[0].split('=')[1].strip.to_i
       offset = output.split(',')[1].split('=')[1].strip.to_f
     rescue
