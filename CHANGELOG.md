@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## Unreleased][unreleased]
 
+## [0.0.3] - 2015-07-14
+### Changed
+- updated sensu-plugin gem to 1.2.0
+
 ### Fixed
 - Modified check-ntp.rb to ignore additional initial line of ntpq output on some systems (e.g. Centos6)
 
