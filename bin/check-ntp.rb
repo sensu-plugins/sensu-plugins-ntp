@@ -43,7 +43,7 @@ class CheckNTP < Sensu::Plugin::Check::CLI
          proc: proc(&:to_f),
          default: 100
   
-    option :stratum,
+  option :stratum,
          short: '-s STRATUM',
          description: 'check that stratum meets or exceeds desired value',
          proc: proc(&:to_i),
