@@ -29,13 +29,18 @@ require 'sensu-plugin/check/cli'
 class CheckNTP < Sensu::Plugin::Check::CLI
   option :warn,
          short: '-w WARN',
-         proc: proc(&:to_i),
+         proc: proc(&:to_f),
          default: 10
 
   option :crit,
          short: '-c CRIT',
-         proc: proc(&:to_i),
+         proc: proc(&:to_f),
          default: 100
+  
+    option :stratum,
+         short: '-s STRATUM',
+         description: 'check that stratum meets or exceeds desired value',
+         proc: proc(&:to_i)
 
   def run
     begin
@@ -45,9 +50,15 @@ class CheckNTP < Sensu::Plugin::Check::CLI
     rescue
       unknown 'NTP command Failed'
     end
-
-    critical 'NTP not synced' if stratum > 15
-
+  
+    if stratum > 15
+      critical "NTP not synced"
+    elsif config[:stratum]
+      if stratum > config[:stratum]
+        critical "NTP stratum (#{stratum}) above limit (#{config[:stratum]})"
+      end
+    end
+    
     message = "NTP offset by #{offset.abs}ms"
     critical message if offset >= config[:crit] || offset <= -config[:crit]
     warning message if offset >= config[:warn] || offset <= -config[:warn]
