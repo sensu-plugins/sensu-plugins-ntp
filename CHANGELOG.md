@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## Unreleased][unreleased]
 
+## [0.0.4] - 2015-10-24
+### Fixed
+- Fixed warning and critical args to use float instead of int.  Added arg to have a configurable stratum limit.
+
 ## [0.0.3] - 2015-07-14
 ### Changed
 - updated sensu-plugin gem to 1.2.0
