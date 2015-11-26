@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.date                   = Date.today.to_s
   s.description            = 'This plugin provides native NTP instrumentation
                               for monitoring and metrics collection, including:
-                              server drift, and metrics via `ntpdate` and `ntpstats`'
+                              server drift, and metrics via `ntpdate` and `ntpstats`.'
   s.email                  = '<sensu-users@googlegroups.com>'
   s.executables            = Dir.glob('bin/**/*').map { |file| File.basename(file) }
   s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
