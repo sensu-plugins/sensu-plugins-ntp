@@ -16,16 +16,19 @@ notifications:
     on_failure: always
 script:
 - bundle exec rake default
+- gem build sensu-plugins-ntp.gemspec
+- gem install sensu-plugins-ntp-*.gem
 deploy:
   provider: rubygems
   api_key:
-    secure: eigAjp+npDepEe/pmiEb1+uZaoqChxeqMrx2LARi8RYWWV2j+r8kzYcK5Hpz8WkfO0mUcUtrFSeqtply0yvwYQN+M0htFV0Ukb/Rna/AVAAX7+KUwcGNUCQoYZ9+TvdxkRcVNqLk5oCksSdmpYIWZmzrpVLb2GfN1meQJMKGItk=
+    secure: gwnrJa1dxCPXRbM1iquvYJFwyN225XjJI/4E8fteWf9D0ZAF3Vks7sOUvCqOjwXMmHds1viH0ilVlCuKcNqs/joOL5ggpzg56sZVBaB7fWdJncjvXLmCi0lkU/oI2f0GBESoCw13cGEzGFZ67EGq7X3VmmMx2V3Gwn3zr5BPdyk=
   gem: sensu-plugins-ntp
   on:
     tags: true
+    repo: sensu-plugins/sensu-plugins-ntp
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
     rvm: 2.1
     rvm: 2.2
-    repo: sensu-plugins/sensu-plugins-ntp
+

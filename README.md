@@ -5,7 +5,6 @@
 [![Code Climate](https://codeclimate.com/github/sensu-plugins/sensu-plugins-ntp/badges/gpa.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-ntp)
 [![Test Coverage](https://codeclimate.com/github/sensu-plugins/sensu-plugins-ntp/badges/coverage.svg)](https://codeclimate.com/github/sensu-plugins/sensu-plugins-ntp)
 [![Dependency Status](https://gemnasium.com/sensu-plugins/sensu-plugins-ntp.svg)](https://gemnasium.com/sensu-plugins/sensu-plugins-ntp)
-[ ![Codeship Status for sensu-plugins/sensu-plugins-ntp](https://codeship.com/projects/931f8480-dc04-0132-649b-025863fcc952/status?branch=master)](https://codeship.com/projects/79858)
 
 ## Functionality
 
