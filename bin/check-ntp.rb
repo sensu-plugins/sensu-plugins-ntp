@@ -55,7 +55,7 @@ class CheckNTP < Sensu::Plugin::Check::CLI
          short: '-u CODE',
          description: 'If ntp_status is unsynced (that is, not yet connected to or disconnected from ntp), what should the response be.',
          proc: proc(&:downcase),
-         default: 'ok'
+         default: 'unknown'
 
   def run
     begin
