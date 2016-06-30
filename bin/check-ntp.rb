@@ -73,6 +73,8 @@ class CheckNTP < Sensu::Plugin::Check::CLI
         warning 'NTP state unsynced'
       when 'crit'
         critical 'NTP state unsynced'
+      when 'unknown'
+        unknown 'NTP state unsynced'
       end
     end
 
