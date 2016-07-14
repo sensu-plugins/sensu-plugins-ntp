@@ -29,6 +29,8 @@
 # 16:     Unsynchronized
 # 17-255: Reserved
 #
+# Source Field Status Codes
+# http://doc.ntp.org/current-stable/decode.html
 
 require 'sensu-plugin/check/cli'
 
@@ -49,13 +51,31 @@ class CheckNTP < Sensu::Plugin::Check::CLI
          proc: proc(&:to_i),
          default: 15
 
+  option :unsynced_status,
+         short: '-u CODE',
+         description: 'If ntp_status is unsynced (that is, not yet connected to or disconnected from ntp), what should the response be.',
+         proc: proc(&:downcase),
+         default: 'unknown'
+
   def run
     begin
       output = `ntpq -c "rv 0 stratum,offset"`.split("\n").find { |line| line.start_with?('stratum') }
       stratum = output.split(',')[0].split('=')[1].strip.to_i
       offset = output.split(',')[1].split('=')[1].strip.to_f
+      source_field_status = config[:unsynced_status] == 'ok' ? 6 : /status=[0-3]([0-9])[0-9a-f]{2}/.match(`ntpq -c "rv 0"`)[1].to_i
     rescue
       unknown 'NTP command Failed'
+    end
+
+    if source_field_status == 0
+      case config[:unsynced_status]
+      when 'warn'
+        warning 'NTP state unsynced'
+      when 'crit'
+        critical 'NTP state unsynced'
+      when 'unknown'
+        unknown 'NTP state unsynced'
+      end
     end
 
     if stratum > 15
