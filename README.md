@@ -65,5 +65,5 @@ Descriptions taken from https://www.eecis.udel.edu/~mills/ntp/html/ntpq.html.
 ## Installation
 
 ```plain
-sensu-install sensu-plugins-ntp
+sensu-install --plugin sensu-plugins-ntp
 ```
