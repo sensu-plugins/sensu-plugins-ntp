@@ -1,14 +1,19 @@
-#Change Log
+# Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
+This CHANGELOG follows the format listed at [here](https://github.com/sensu-plugins/community/blob/master/HOW_WE_CHANGELOG.md)
 
 ## [Unreleased]
+
+## [1.0.2] - 2018-01-03
 ## Fixed
 - check-ntp.rb: fix timeout issue bu using loopback (@mdzidic)
 
 ### Added
 - Ruby 2.4.1 testing
+
+### Changed
+- update changelog guidelines location (@majormoses)
 
 ## [1.0.1] - 2016-12-30
 ### Fixed
@@ -47,7 +52,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-ntp/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-ntp/compare/1.0.2...HEAD
+[1.0.2]: https://github.com/sensu-plugins/sensu-plugins-ntp/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/sensu-plugins/sensu-plugins-ntp/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-ntp/compare/0.0.4...1.0.0
 [0.0.4]: https://github.com/sensu-plugins/sensu-plugins-ntp/compare/0.0.3...0.0.4
