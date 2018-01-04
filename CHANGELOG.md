@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+## Fixed
+- check-ntp.rb: fix timeout issue bu using loopback (@mdzidic)
+
 ### Added
 - Ruby 2.4.1 testing
 
