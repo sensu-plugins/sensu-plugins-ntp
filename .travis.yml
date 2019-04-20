@@ -1,12 +1,10 @@
 language: ruby
+services: docker
 cache:
 - bundler
 install:
 - bundle install
 rvm:
-- 2.0
-- 2.1
-- 2.2
 - 2.3.0
 - 2.4.1
 notifications:
@@ -19,8 +17,10 @@ script:
 - bundle exec rake default
 - gem build sensu-plugins-ntp.gemspec
 - gem install sensu-plugins-ntp-*.gem
+before_deploy:
+- bash -c "[ ! -d bonsai/ ] && git clone https://github.com/sensu/sensu-go-bonsai-asset.git bonsai || echo 'bonsai/ exists, skipping git clone'"
 deploy:
-  provider: rubygems
+- provider: rubygems
   api_key:
     secure: gwnrJa1dxCPXRbM1iquvYJFwyN225XjJI/4E8fteWf9D0ZAF3Vks7sOUvCqOjwXMmHds1viH0ilVlCuKcNqs/joOL5ggpzg56sZVBaB7fWdJncjvXLmCi0lkU/oI2f0GBESoCw13cGEzGFZ67EGq7X3VmmMx2V3Gwn3zr5BPdyk=
   gem: sensu-plugins-ntp
@@ -28,8 +28,13 @@ deploy:
     tags: true
     repo: sensu-plugins/sensu-plugins-ntp
     all_branches: true
-    rvm: 2.0
-    rvm: 2.1
-    rvm: 2.2
     rvm: 2.3.0
     rvm: 2.4.1
+- provider: script
+  script: bonsai/ruby-runtime/travis-build-ruby-plugin-assets.sh sensu-plugins-ntp
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+    rvm: 2.4.1
+    
