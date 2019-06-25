@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed at [here](https://github.com/sensu-plug
 
 ## [Unreleased]
 
+### Breaking Change
+- Update `sensu-plugin` version from `2.x` to `'>= 2', '< 5'` for Sensu Go enablement.
+
 ## [2.0.0] - 2019-04-19
 ### Breaking Changes
 - Update minimum required ruby version to 2.3. Drop unsupported ruby versions.
