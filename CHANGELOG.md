@@ -7,6 +7,7 @@ This CHANGELOG follows the format listed at [here](https://github.com/sensu-plug
 
 ### Added
 - Updated asset build targets to support centos6
+- Removed centos from bonsai asset definition
 
 ## [2.0.0] - 2019-04-19
 ### Breaking Changes
