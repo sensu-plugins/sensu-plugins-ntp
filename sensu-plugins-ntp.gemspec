@@ -1,4 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'date'
@@ -12,13 +14,13 @@ Gem::Specification.new do |s|
                               server drift, and metrics via `ntpdate` and `ntpstats`.'
   s.email                  = '<sensu-users@googlegroups.com>'
   s.executables            = Dir.glob('bin/**/*.rb').map { |file| File.basename(file) }
-  s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
+  s.files                  = Dir.glob('{bin,lib}/**/*') + %w[LICENSE README.md CHANGELOG.md]
   s.homepage               = 'https://github.com/sensu-plugins/sensu-plugins-ntp'
   s.license                = 'MIT'
-  s.metadata               = { 'maintainer'         => '@mattyjones',
+  s.metadata               = { 'maintainer' => '@mattyjones',
                                'development_status' => 'active',
-                               'production_status'  => 'unstable - testing recommended',
-                               'release_draft'      => 'false',
+                               'production_status' => 'unstable - testing recommended',
+                               'release_draft' => 'false',
                                'release_prerelease' => 'false' }
   s.name                   = 'sensu-plugins-ntp'
   s.platform               = Gem::Platform::RUBY
@@ -37,7 +39,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry',                       '~> 0.10'
   s.add_development_dependency 'rake',                      '~> 12.3'
   s.add_development_dependency 'redcarpet',                 '~> 3.2'
-  s.add_development_dependency 'rubocop',                   '~> 0.79.0'
   s.add_development_dependency 'rspec',                     '~> 3.4'
+  s.add_development_dependency 'rubocop',                   '~> 0.79.0'
   s.add_development_dependency 'yard',                      '~> 0.8'
 end

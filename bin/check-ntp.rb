@@ -1,4 +1,6 @@
 #! /usr/bin/env ruby
+# frozen_string_literal: true
+
 #
 #   check-ntp
 #
@@ -63,11 +65,11 @@ class CheckNTP < Sensu::Plugin::Check::CLI
       stratum = output.split(',')[0].split('=')[1].strip.to_i
       offset = output.split(',')[1].split('=')[1].strip.to_f
       source_field_status = config[:unsynced_status] == 'ok' ? 6 : /status=[0-9a-f]([0-9])[0-9a-f]{2}/.match(`ntpq -c "rv 0" 127.0.0.1`)[1].to_i
-    rescue
+    rescue StandardError
       unknown 'NTP command Failed'
     end
 
-    if source_field_status == 0
+    if source_field_status.zero?
       case config[:unsynced_status]
       when 'warn'
         warning 'NTP state unsynced'
