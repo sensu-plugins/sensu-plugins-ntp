@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [here](https://github.com/sensu-plug
 
 ## [Unreleased]
 
+### Added
+- Updated asset build targets to support centos6
+- Removed centos from bonsai asset definition
+
 ### Changed
 - Updated rubocop dependency to '~> 0.79.0'
 - Remediated issues identified by updating rubocop
