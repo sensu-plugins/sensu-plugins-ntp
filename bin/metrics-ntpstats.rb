@@ -1,5 +1,6 @@
 #! /usr/bin/env ruby
-#  encoding: UTF-8
+# frozen_string_literal: true
+
 #
 #   ntpstats-metrics
 #
@@ -61,7 +62,7 @@ class NtpStatsMetrics < Sensu::Plugin::Metric::CLI::Graphite
   end
 
   def get_ntpstats(host)
-    key_pattern = Regexp.compile(%w(
+    key_pattern = Regexp.compile(%w[
       clk_jitter
       clk_wander
       frequency
@@ -70,7 +71,7 @@ class NtpStatsMetrics < Sensu::Plugin::Metric::CLI::Graphite
       stratum
       sys_jitter
       tc
-    ).join('|'))
+    ].join('|'))
     num_val_pattern = /-?[\d]+(\.[\d]+)?/
     pattern = /(#{key_pattern})=(#{num_val_pattern}),?\s?/
 
