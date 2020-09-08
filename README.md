@@ -32,9 +32,10 @@ This plugin provides native network time protocol (NTP) instrumentation for moni
  * metrics-ntpstats.rb
  
 **check-ntp** 
-Checks the synchronization state of the local NTP server.
+Checks the synchronization state of local or remote NTP server.
 
 * Parameters:
+  - `host`: Host name/address (default: `127.0.0.1`)
   - `warn`: Maximum offset in ms for warning state (default: `10`)
   - `crit`: Maximum offset in ms for critical state (default: `100`)
   - `stratum`: Maximum stratum value (default: `15`)
@@ -75,6 +76,7 @@ Gets metrics from `ntpstats`.
 **check-ntp.rb**
 ```
 Usage: check-ntp.rb (options)
+    -h HOST
     -c CRIT
     -s STRATUM                       check that stratum meets or exceeds desired value
     -u CODE                          If ntp_status is unsynced (that is, not yet connected to or disconnected from ntp), what should the response be.
