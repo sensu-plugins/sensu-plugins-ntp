@@ -6,6 +6,7 @@ This CHANGELOG follows the format listed at [here](https://github.com/sensu-plug
 ## [Unreleased]
 
 ### Added
+- Command line option for host
 - Updated asset build targets to support centos6
 - Removed centos from bonsai asset definition
 

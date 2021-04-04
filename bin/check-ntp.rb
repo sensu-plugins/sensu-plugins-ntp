@@ -37,6 +37,10 @@
 require 'sensu-plugin/check/cli'
 
 class CheckNTP < Sensu::Plugin::Check::CLI
+  option :host,
+         short: '-h HOST',
+         default: '127.0.0.1'
+
   option :warn,
          short: '-w WARN',
          proc: proc(&:to_f),
@@ -61,10 +65,10 @@ class CheckNTP < Sensu::Plugin::Check::CLI
 
   def run
     begin
-      output = `ntpq -c "rv 0 stratum,offset" 127.0.0.1`.split("\n").find { |line| line.start_with?('stratum') }
-      stratum = output.split(',')[0].split('=')[1].strip.to_i
-      offset = output.split(',')[1].split('=')[1].strip.to_f
-      source_field_status = config[:unsynced_status] == 'ok' ? 6 : /status=[0-9a-f]([0-9])[0-9a-f]{2}/.match(`ntpq -c "rv 0" 127.0.0.1`)[1].to_i
+      output = `ntpq -c raw -c 'rv 0' '#{config[:host]}'`
+      stratum = /stratum=(-?\d+)/.match(output)[1].to_i
+      offset = /offset=(-?\d+(\.\d+)?)/.match(output)[1].to_f
+      source_field_status = config[:unsynced_status] == 'ok' ? 6 : /status=((0x)?[0-9a-f]{2})/.match(output)[1].hex & 0x3f
     rescue StandardError
       unknown 'NTP command Failed'
     end
